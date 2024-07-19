@@ -1,6 +1,10 @@
 package arrayslise
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/stretchr/testify/require"
+)
 
 func TestSum(t *testing.T) {
 	t.Run("array", func(t *testing.T) {
@@ -38,5 +42,34 @@ func TestSum(t *testing.T) {
 			t.Errorf("want %d got %d, given %v", want, got, numbers)
 		}
 
+	})
+	t.Run("Test SumAll", func(t *testing.T) {
+		want := []int{3, 9}
+		got := SumAll([]int{1, 2}, []int{0, 9})
+		require.Equal(t, want, got)
+	})
+
+	t.Run("Test SumAll", func(t *testing.T) {
+		want := []int{5, 4}
+		got := SumAll([]int{3, 2}, []int{2, 2})
+		require.Equal(t, want, got)
+	})
+
+	t.Run("Test SumAll", func(t *testing.T) {
+		want := []int{5, 4, 6}
+		got := SumAll([]int{3, 2}, []int{2, 2}, []int{3, 3})
+		require.Equal(t, want, got)
+	})
+
+	t.Run("Test SumAll", func(t *testing.T) {
+		want := []int{}
+		got := SumAll()
+		require.Equal(t, want, got)
+	})
+
+	t.Run("Test SumAll", func(t *testing.T) {
+		want := []int{0}
+		got := SumAll([]int{})
+		require.Equal(t, want, got)
 	})
 }
